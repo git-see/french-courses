@@ -1,10 +1,25 @@
-.menu{
-    font-size: 1.2em;
+.menu {
+  font-size: 1.2em;
 }
 
-ul{
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #07c5fa;
+  text-decoration: underline;
+}
+
+.activeLink {
+  font-weight:600;
+  color: #07c5fa;
 }
