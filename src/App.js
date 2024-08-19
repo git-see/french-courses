@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+
 import Menu from "./components/Menu";
 import Home from "./pages/Home";
 import CourseAdd from "./pages/CourseAdd";
@@ -7,10 +9,12 @@ import "./css/app.css";
 function App() {
   return (
     <>
-      <Menu />;
-      <Home />;
-      <CourseAdd />;
-      <CoursesList />;
+      <Menu />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/add" element={<CourseAdd />} />
+        <Route path="/list" element={<CoursesList />} />
+      </Routes>
     </>
   );
 }
