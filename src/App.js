@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,8 +8,22 @@ import CourseAdd from "./pages/CourseAdd";
 import CoursesList from "./pages/CoursesList";
 import "./css/app.css";
 
+import { useLocalStorage } from "./hooks/useLocalStorage";
+
 function App() {
   const [courses, setCourses] = useState([]);
+  const STORAGE_KEY = "courses";
+  const [storedCourses, setStoredCourses] = useLocalStorage(STORAGE_KEY, []);
+
+  useEffect(() => {
+    console.log("useEffect with []");
+    setCourses(storedCourses);
+  }, []);
+
+  useEffect(() => {
+    console.log("useEffect with [course]");
+    setStoredCourses(courses);
+  }, [courses]);
 
   function handleAddCourse(course) {
     console.log("handleAddCourse", course);
