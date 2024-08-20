@@ -1,7 +1,7 @@
-import { useStat } from "react";
+import { useState } from "react";
 
 export default function CourseAdd(props) {
-  const [course, setCourse] = useStat({
+  const [course, setCourse] = useState({
     coursename: "",
     coursesubject: "",
     coursedescription: "",
@@ -12,6 +12,11 @@ export default function CourseAdd(props) {
   function handleSubmit(evt) {
     evt.preventDefault();
     handleAddCourse(course);
+    setCourse({
+      coursename: "",
+      coursesubject: "",
+      coursedescription: "",
+    });
   }
 
   function handleChange(evt) {
