@@ -12,6 +12,7 @@ function App() {
 
   function handleAddCourse(course) {
     console.log("handleAddCourse", course);
+    setCourses([...courses, course]);
   }
 
   return (
