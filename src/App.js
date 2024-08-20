@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 import Menu from "./components/Menu";
 import Home from "./pages/Home";
@@ -12,6 +13,7 @@ function App() {
 
   function handleAddCourse(course) {
     console.log("handleAddCourse", course);
+    setCourses([...courses, { ...course, courseid: uuidv4() }]);
   }
 
   return (
@@ -23,7 +25,7 @@ function App() {
           path="/add"
           element={<CourseAdd handleAddCourse={handleAddCourse} />}
         />
-        <Route path="/list" element={<CoursesList />} />
+        <Route path="/list" element={<CoursesList courses={courses} />} />
       </Routes>
     </>
   );
