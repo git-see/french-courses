@@ -16,6 +16,10 @@ function App() {
     setCourses([...courses, { ...course, courseid: uuidv4() }]);
   }
 
+  function handleDeleteCourse(id) {
+    setCourses(courses.filter((cours) => cours.courseid !== id));
+  }
+
   return (
     <>
       <Menu />
@@ -25,7 +29,15 @@ function App() {
           path="/add"
           element={<CourseAdd handleAddCourse={handleAddCourse} />}
         />
-        <Route path="/list" element={<CoursesList courses={courses} />} />
+        <Route
+          path="/list"
+          element={
+            <CoursesList
+              courses={courses}
+              handleDeleteCourse={handleDeleteCourse}
+            />
+          }
+        />
       </Routes>
     </>
   );
