@@ -13,14 +13,20 @@ export default function Menu() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/add"
+          <NavLink
+            to="/add"
             className={({ isActive }) => (isActive ? "activeLink" : undefined)}
-          >Add course</NavLink>
+          >
+            Add course
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/list"
+          <NavLink
+            to="/list"
             className={({ isActive }) => (isActive ? "activeLink" : undefined)}
-          >All courses</NavLink>
+          >
+            All courses
+          </NavLink>
         </li>
       </ul>
     </div>

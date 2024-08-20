@@ -7,7 +7,11 @@ export default function CoursesList(props) {
       <h1>All courses</h1>
       <div>
         {courses.map((course) => (
-          <CourseItem course={course} key={course.courseid} handleDeleteCourse={handleDeleteCourse} />
+          <CourseItem
+            course={course}
+            key={course.courseid}
+            handleDeleteCourse={handleDeleteCourse}
+          />
         ))}
       </div>
     </div>
