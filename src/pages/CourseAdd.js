@@ -1,16 +1,47 @@
-export default function CourseAdd() {
+import { useStat } from "react";
+
+export default function CourseAdd(props) {
+  const [course, setCourse] = useStat({
+    coursename: "",
+    coursesubject: "",
+    coursedescription: "",
+  });
+
+  const { handleAddCourse } = props;
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    handleAddCourse(course);
+  }
+
+  function handleChange(evt) {
+    const { name, value } = evt.target;
+    setCourse({ ...course, [name]: value });
+  }
+
   return (
     <div className="course-add">
       <h1>Add a course</h1>
       <div>
-        <form>
-          <label htmlFor="course-name">Name:</label>
+        <form onSubmit={(evt) => handleSubmit(evt)}>
+          <label htmlFor="coursename">Name:</label>
           <br />
-          <input type="text" id="course-name" name="course-name" />
+          <input
+            type="text"
+            id="coursename"
+            name="coursename"
+            value={course.coursename}
+            onChange={(evt) => handleChange(evt)}
+          />
           <br />
-          <label htmlFor="course-subject">Subject:</label>
+          <label htmlFor="coursesubject">Subject:</label>
           <br />
-          <select name="course-subject" id="course-subject">
+          <select
+            name="coursesubject"
+            id="coursesubject"
+            value={course.coursesubject}
+            onChange={(evt) => handleChange(evt)}
+          >
             <option value="spelling">Select a subject</option>
             <option value="spelling">Spelling</option>
             <option value="grammar">Grammar</option>
@@ -18,16 +49,18 @@ export default function CourseAdd() {
             <option value="other">Other</option>
           </select>
           <br />
-          <label htmlFor="course-description">Description:</label>
+          <label htmlFor="coursedescription">Description:</label>
           <br />
           <textarea
-            id="course-description"
-            name="course-description"
+            id="coursedescription"
+            name="coursedescription"
             cols="30"
             rows="10"
+            value={course.coursedescription}
+            onChange={(evt) => handleChange(evt)}
           ></textarea>
           <br />
-          <input type="submit" value="Add course" />
+          <input type="submit" value="Add course" className="btn" />
           <br />
         </form>
       </div>
